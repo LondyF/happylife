@@ -183,10 +183,11 @@ body, html {
   color: #1EAEDB;
 }
 
-/*<--------------------- Second Section ---------------------->*/
+/*<--------------------- Webshop Section ---------------------->*/
 
-#mainContent{
-  height: 800px;
+#webshopSection{
+  height: auto;
+  box-shadow: 0 4px 2px -2px gray;
 }
 
 .title {
@@ -273,4 +274,22 @@ body, html {
     width: 100%;
     height: auto;
   }
+}
+
+/*<----------Service Section-------->*/
+#serviceSection{
+  padding-top: 17px;
+  background-color: #eee;
+}
+#serviceSection .serviceContainer{
+  margin: 0 auto;
+  width: 80%;
+  height: 10000px;
+  background-color: white;
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5);
+}
+
+#serviceSection .serviceContainer div{
+  text-align: center;
+  border: 1px solid red;
 }

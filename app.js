@@ -15,6 +15,8 @@ mongoose.connect('mongodb://localhost/happylife');
 
 //ROUTES
 app.get("/", function(req, res) {
+
+
     Product.find({}, function(err, products){
       if(err){
         console.log(err);
@@ -22,6 +24,7 @@ app.get("/", function(req, res) {
         res.render("index", {products: products});
       }
     });
+
 });
 
 app.get("/show/:name");
