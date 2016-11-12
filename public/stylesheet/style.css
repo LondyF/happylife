@@ -1,0 +1,276 @@
+body, html {
+  /*background-color: #ededed;*/
+  background: white;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
+/*<--------------------- MENU ---------------------->*/
+
+/*.menu {
+  position: absolute;
+  background: white;
+  height: 80px;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  border-bottom: 1px solid #bfbfbf;
+  box-shadow: 1px 1px rgba(191, 191, 191, 0.3);
+}
+
+.menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  list-style-type: none;
+  float: left;
+  padding-left: 5%;
+  padding-top: 27px;
+}
+
+.menu img {
+  padding-top: 5px;
+  margin-right: -15px;
+  margin-left: 25px;
+  float: left;
+  height: 70px;
+}
+
+.menu a {
+  color: black;
+  border-bottom: solid 2px rgba(30, 174, 219, 0);
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+
+}
+
+.menu a:hover{
+  color: #1EAEDB;
+  border-bottom: solid 2px rgba(30, 174, 219, 1);
+}*/
+
+.menu{
+  position:fixed;
+  width: 395px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.menuFixed{
+  background: rgba(0, 0, 0, .50);
+  margin: 0 auto;
+  margin-top: 0;
+  z-index: 9999;
+  height: 40px;
+  text-align: center;
+  padding-top: 12px;
+  width: 100%;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.menuFixed ul{
+    margin: 2px auto;
+    margin-left: 25px;
+    line-height: 2;
+    padding-left: 0;
+}
+.menuFixed li {
+    float: none;
+    display: inline;
+    text-align: center;
+}
+
+
+.menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+.menu li{
+  color: white;
+  text-shadow: 1px 1px black;
+  list-style-type: none;
+  float: left;
+  padding-right: 25px;
+}
+
+.menu a{
+  color: white;
+  text-decoration: none;
+}
+
+.menu a:hover{
+    color: #1EAEDB;
+}
+
+.shoppingCart{
+  display: block;
+  color: white;
+  float: right;
+  /*margin-right: 50px;*/
+  font-size: 15px;
+}
+
+.shoppingCartMenu{
+  position: absolute;
+  right: 0;
+}
+
+/*<--------------------- First Section ---------------------->*/
+
+.mainImage{
+  background-image: url("/images/test2.jpg");
+  height: 100%;
+  background-size: cover;
+  box-shadow: 1px 1px 5px black;
+}
+
+.overlay{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .40);
+}
+
+.overlay h1 {
+  position: absolute;
+  font-family: 'Tangerine', cursive;
+  Color: white;
+  text-shadow: 1px 1px black;
+  font-size: 70px;
+  text-align: center;
+}
+
+.textBox{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+  width: 600px;
+}
+
+.arrow{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 75px;
+  width: 75px;
+  bottom: 0;
+  text-shadow: 1px 1px black;
+}
+
+.arrow a {
+  color: white;
+}
+
+.arrow a:hover {
+  color: #1EAEDB;
+}
+
+/*<--------------------- Second Section ---------------------->*/
+
+#mainContent{
+  height: 800px;
+}
+
+.title {
+  position: relative;
+  color: red;
+  text-align: center;
+  font-weight: normal;
+  font-size: 35px;
+  color: #386296;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.title span {
+  background: #fff;
+  padding: 0 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.title:before {
+  background: #ddd;
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.title:before {
+  left: 0;
+}
+
+.webshopItem{
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.webshopItem:hover{
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.webshopItem img{
+  display:block;
+  margin:auto;
+  width: 247px;
+  height: 260px;
+}
+
+.webshopItem a {
+  color: black;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.webshopItem small, h5, h4, button{
+  text-align: center;
+  display:block;
+  margin:auto;
+}
+
+.webshopItem small{
+  color: #627f9a;
+  font-weight: 600;
+}
+
+.productName {
+  font-size: 17px;
+}
+
+.productPrice{
+  font-size: 21px;
+  color: #386296;
+}
+
+@media (max-width: 750px) {
+  .webshopItem img{
+    width: 100%;
+    height: auto;
+  }
+}
