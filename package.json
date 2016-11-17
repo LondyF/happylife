@@ -9,8 +9,10 @@
   "author": "Dylan Elens, Londy Ferero and Zjerilon Ferero",
   "license": "ISC",
   "dependencies": {
+    "client-sessions": "^0.7.0",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
-    "mongoose": "^4.6.7"
+    "mongoose": "^4.6.7",
+    "nodemon": "^1.11.0"
   }
 }

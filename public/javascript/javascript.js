@@ -25,13 +25,12 @@ $(document).ready(function(){
   });
 
   function fadeInItems(itemClassName){
-    $(itemClassName).hide();
     $(window).scroll(function () {
          $(itemClassName).each(function (i) {
              var bottom_of_object = $(this).position().top + $(this).outerHeight();
              var bottom_of_window = $(window).scrollTop() + $(window).height() / 3;
              if (bottom_of_window > bottom_of_object) {
-               $(this).fadeIn(700);
+               $(this).animate({'opacity':'1'},500);
              }
          });
      });
@@ -39,4 +38,16 @@ $(document).ready(function(){
 
   fadeInItems('.webshopItem');
 
+  $('.shoppingCartQty').on("input", function(){
+    var productPrice = $(this).closest("tr").find("span").attr('data-price');
+    var valQty = $(this).val();
+    var newPrice = parseFloat(productPrice * valQty).toFixed(2);
+    $(this).closest("tr").find("span").html(newPrice);
+    var total = 0;
+    $('.shoppingCartPrice').each(function() {
+      total += parseFloat($(this).html());
+    });
+      console.log(shoppingCart);
+    $('.shoppingCartTotalPrice').html(parseFloat(total).toFixed(2));
+  });
 });

@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Happy Life</title>
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-    <link href="https://fonts.googleapis.com/css?family=Tangerine:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-    <link rel="stylesheet" href="/stylesheet/style.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="/javascript/javascript.js" charset="utf-8"></script>
-  </head>
-  <body>
-    <%# <div class="menu">
-      <ul>
-        <span><img src="/images/happylife-logo.png" alt="logo" /></span>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Webshop</a</li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </div>%>
+<% include ./layout/header %>
     <div class="mainImage">
       <div class="overlay">
         <div class="menu">
@@ -32,7 +8,7 @@
             <li><a href="#"><i class="fa fa-home" aria-hidden="true"></a></i></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li>
-            <span class="shoppingCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> (1)</span>
+            <span class="shoppingCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><%= shoppingCart.length %></span>
           </ul>
         </div>
         <span class="arrow"><a href="#mainContent"><i class="fa fa-angle-down"></i></a></span>
@@ -49,11 +25,11 @@
           <% } %>
           <div class="four columns">
             <div class="webshopItem">
-              <a href="#"><img src="<%= product.product_image %>" alt="" /></a>
+              <a href="/show/<%= product.product_name %>"><img src="<%= product.product_image %>" alt="" /></a>
               <small><%= product.product_category %></small>
-              <h5 class="productName"><a href="#"><%= product.product_name %></a></h5>
+              <h5 class="productName"><a href="/show/<%= product.product_name %>"><%= product.product_name %></a></h5>
               <h4 class="productPrice">f<%= product.product_price %></h4>
-              <button class="button-primary">Buy Now!</button>
+              <a class="button button-primary" href="/show/<%= product.product_name %>">buy now</a>
             </div>
           </div>
           <% if(count % 3 === 0){ %>
@@ -64,5 +40,4 @@
         <% if(count % 3 !== 1){ %> </div> <% } %>
       </div>
     </div>
-  </body>
-</html>
+<% include ./layout/footer %>
