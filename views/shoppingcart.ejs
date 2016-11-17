@@ -1,0 +1,54 @@
+<% include ./layout/header %>
+  <h1>Shopping Cart</h1>
+  <% if(shoppingCart.length === 0){ %>
+      You have no items in your cart ;(
+  <% } else { %>
+    <script type="text/javascript">
+    var shoppingCart = <%- JSON.stringify(shoppingCart) %>
+    </script>
+    <% var total = 0; %>
+    <div class="row">
+      <div class="eight columns">
+        <table>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Subtotal</th>
+          </tr>
+          <% var newCart = shoppingCart.filter(function(elem, pos) { %>
+            <% return shoppingCart.indexOf(elem) == pos; %>
+         <% });%>
+          <% for(var i = 0; i < newCart.length; i++){ %>
+            <% for(var key in products){ %>
+              <% if(products.hasOwnProperty(key)){ %>
+                <% if(products[key].product_name === newCart[i]){ %>
+                  <tr>
+                    <% var qty = countInArray(shoppingCart, products[key].product_name); %>
+                    <td><img class="shoppingCartImage" src="<%= products[key].product_image %>"/><%= products[key].product_name %></td>
+                    <td>f<%= products[key].product_price %></li></td>
+                    <td><input class="shoppingCartQty" type="number" min="0" value="<%= qty %>" name="qty"></td>
+                    <td>f<span class="shoppingCartPrice" data-price=<%= products[key].product_price %> ><%= parseFloat(products[key].product_price * qty).toFixed(2) %></span></td>
+                  <% total += parseInt(products[key].product_price * qty); %>
+                  </tr>
+                <% } %>
+              <% } %>
+            <% } %>
+          <% } %>
+        </table>
+        Total: <span class="shoppingCartTotalPrice"><%= parseFloat(total).toFixed(2); %></span>
+      </div>
+    </div>
+    <% } %>
+
+  <% function countInArray(array, productName) { %>
+  <% var count = 0; %>
+    <% for (var i = 0; i < array.length; i++) { %>
+      <% if (array[i] === productName) { %>
+        <% count++; %>
+      <% } %>
+    <% } %>
+    <% return count; %>
+  <% } %>
+
+<% include ./layout/footer %>

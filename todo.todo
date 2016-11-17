@@ -1,0 +1,18 @@
+shoppingCart:
+  ☐ Add new notification when item added cart.
+  ☐ Fix shoppingCart icon
+  ☐ Style Shoppingcart page
+
+
+show:
+  ☐ Fix styling
+  ✔ Fix HTML File @done(2016-11-13 21:14) @project(show)
+
+index:
+  ✔ Make images responsive @done(2016-11-13 21:09) @project(index)
+  ☐ Make menu responsive
+  ☐ Make footer
+
+
+cms:
+  ☐ Hele systeem! EcksDee

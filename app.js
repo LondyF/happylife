@@ -39,12 +39,14 @@ app.use(function(req, res, next) {
 //ROUTES
 app.get("/", function(req, res) {
     Product.find({}, null, {sort: {product_category: 1}}, function(err, products){
+    Product.find({}, function(err, products){
       if(err){
         console.log(err);
       }else{
         res.render("index", {products: products, shoppingCart: req.session.shoppingCart});
       }
     });
+
 });
 
 app.get("/show/:productname", function(req, res){
@@ -84,7 +86,7 @@ app.get("/shoppingcart", function(req, res){
   });
 });
 
-
+});
 
 //START SERVER
 app.listen("3000", function() {

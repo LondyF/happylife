@@ -1,0 +1,15 @@
+<% include ./layout/header %>
+    <div class="container">
+      <div class="row">
+        <div class="eight columns">
+          <img src="<%= product.product_image %>"/>
+        </div>
+        <div class="three columns">
+          <h1 class="titleShowPage"><%= product.product_name %></h1>
+          <h4 class="priceShowPage">f<%= product.product_price %></h4>
+          <h5 class="descriptionShowPage"><%= product.product_description %></h5>
+          <a class="button button-primary" href="/addtocart/<%= product.product_name %>">Add To Shoppingcart</a>
+        </div>
+      </div>
+    </div>
+<% include ./layout/footer %>
