@@ -323,7 +323,6 @@ td > * {
     height: auto;
   }
 }
-<<<<<<< HEAD
 @media (max-width: 1000px) {
   .mainImage{
     background-position: center center;
@@ -349,8 +348,7 @@ td > * {
     margin-top: 5px;
     font-size: 50px;
   }
-=======
-
+  
 /*<----------Service Section-------->*/
 #serviceSection{
   padding-top: 17px;
@@ -367,5 +365,4 @@ td > * {
 #serviceSection .serviceContainer div{
   text-align: center;
   border: 1px solid red;
->>>>>>> 930bfceca312f31b41e8f51bc7400099c4d048b1
 }
