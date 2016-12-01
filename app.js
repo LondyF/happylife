@@ -49,7 +49,7 @@ function countInArray(array, productName) {
   var count = 0;
   for (var i = 0; i < array.length; i++) {
     if (array[i] === productName) {
-      count++;
+        count++;
     }
   }
   return count;
