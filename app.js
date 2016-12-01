@@ -13,6 +13,8 @@ var Order = require("./models/orders.js");
 //INIT
 var app = express();
 
+app.set('port', (process.env.PORT || 5000));
+
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 
@@ -247,6 +249,6 @@ app.post("/checkout", function(req, res){
 
 
 //START SERVER
-app.listen("3000", function() {
+app.listen(app.get('port'), function() {
     console.log("Happy Life is Running!");
 });
