@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
  }));
  app.use(bodyParser.json());
  app.use(methodOverride("_method"));
-mongoose.connect('mongodb://localhost/happylife');
+mongoose.connect('mongodb://playerfine:qazwsx123@ds161505.mlab.com:61505/happylife');
 
 app.use(session({
 	cookieName: "session", //define the name
