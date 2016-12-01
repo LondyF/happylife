@@ -1,16 +1,16 @@
 <% include ./layout/header %>
     <div class="mainImage">
       <div class="overlay">
-        <div class="menu">
+        <div class="menu menuAtTop">
           <ul>
             <li><a href="#webshopSection">Webshop</a></li>
             <li><a href="#serviceSection">Service</a></li>
             <li><a href="#"><i class="fa fa-home" aria-hidden="true"></a></i></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li>
-            <span class="shoppingCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><%= shoppingCart.length %></span>
           </ul>
         </div>
+        <span class="shoppingCart"><a href="/shoppingCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><%= shoppingCart.length %></a></span>
         <span class="arrow"><a href="#webshopSection"><i class="fa fa-angle-down"></i></a></span>
         <div class="textBox"><h1>HappyLife The Best Place To Buy Your Favorite Clothing</h1></div>
       </div>
@@ -41,10 +41,7 @@
 
       </div>
     </div>
-<<<<<<< HEAD
 <% include ./layout/footer %>
-=======
     <% include service %>
   </body>
 </html>
->>>>>>> 930bfceca312f31b41e8f51bc7400099c4d048b1

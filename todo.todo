@@ -1,7 +1,9 @@
 shoppingCart:
   ☐ Add new notification when item added cart.
   ☐ Fix shoppingCart icon
-  ☐ Style Shoppingcart page
+  ✔ Style Shoppingcart page @done(2016-11-20 13:03) @project(shoppingCart)
+  ✔ continueShopping button @done(2016-11-20 13:03) @project(shoppingCart)
+  ✔ delete items + change QTY @done(2016-11-20 13:04) @project(shoppingCart)
 
 
 show:
@@ -9,6 +11,7 @@ show:
   ✔ Fix HTML File @done(2016-11-13 21:14) @project(show)
 
 index:
+  ☐ Pagination
   ✔ Make images responsive @done(2016-11-13 21:09) @project(index)
   ☐ Make menu responsive
   ☐ Make footer
@@ -16,3 +19,15 @@ index:
 
 cms:
   ☐ Hele systeem! EcksDee
+
+CheckOut:
+  ☐ Get user information
+  ☐ Send email when new order is made
+  ☐ Place order in Database
+
+
+Data:
+-voornaam + achternaam
+-emaii
+-phonenumber
+-adress

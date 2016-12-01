@@ -1,0 +1,76 @@
+<% include ./layout/header %>
+  <h1>Checkout</h1>
+  <% if(shoppingCart.length === 0){ %>
+    Your shoppingcart Is Empty!
+  <% }else{ %>
+    <div class="row">
+      <div class="seven columns">
+      <form class="checkoutForm" action="/checkout" method="POST">
+              <div class="error"></div>
+              <div class="bla">ik hou van kip</div>
+        <h3>Personal information</h3>
+        <div class="row">
+          <div class="six columns">
+          Firstname:
+          <input class="checkoutInput" type="text" name="firstname" placeholder="Firstname" required >
+          </div>
+          <div class="six columns">
+          Lastname:
+          <input class="checkoutInput" type="text" name="lastname" placeholder="Lastname"  >
+          </div>
+        </div>
+        Email:
+        <input class="checkoutInput" type="email" name="email"  placeholder="Email" >
+        Email Confirmation:
+        <input class="checkoutInput" type="email" name="email_confirmation"  placeholder="Email Confirmation" >
+        Phonenumber:
+        <input class="checkoutInput" type="tel" name="phonenumber"  placeholder="Phonenumber" >
+        Adress:
+        <input class="checkoutInput" type="text" name="adress"  placeholder="Adress" >
+        <button class="checkOutButton button-primary">Place My Order</button>
+      </form>
+      </div>
+      <div class="five columns">
+        <h3>Your Order!</h3>
+        <table>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+          <tr>
+          <% var total = 0; %>
+          <% var newCart = shoppingCart.filter(function(elem, pos) { %>
+            <% return shoppingCart.indexOf(elem) == pos; %>
+         <% });%>
+          <% for(var i = 0; i < newCart.length; i++){ %>
+            <% for(var key in products){ %>
+              <% if(products.hasOwnProperty(key)){ %>
+                <% if(products[key].product_name === newCart[i]){ %>
+                  <tr>
+                    <% var qty = countInArray(shoppingCart, products[key].product_name); %>
+                    <td><%= products[key].product_name %></li></td>
+                    <td><%= qty %></td>
+                    <td>f<span class="shoppingCartPrice"><%= parseFloat(products[key].product_price * qty).toFixed(2) %></span></td>
+                    <% total += parseFloat(products[key].product_price * qty);%>
+                  </tr>
+                <% } %>
+              <% } %>
+            <% } %>
+          <% } %>
+        </table>
+        </td>Total: <span style="float: right"><%= parseFloat(total).toFixed(2); %></span></td>
+      </div>
+    </div>
+  <% } %>
+
+  <% function countInArray(array, productName) { %>
+  <% var count = 0; %>
+    <% for (var i = 0; i < array.length; i++) { %>
+      <% if (array[i] === productName) { %>
+        <% count++; %>
+      <% } %>
+    <% } %>
+    <% return count; %>
+  <% } %>
+
+<% include ./layout/footer %>

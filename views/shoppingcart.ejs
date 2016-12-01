@@ -25,18 +25,42 @@
                 <% if(products[key].product_name === newCart[i]){ %>
                   <tr>
                     <% var qty = countInArray(shoppingCart, products[key].product_name); %>
-                    <td><img class="shoppingCartImage" src="<%= products[key].product_image %>"/><%= products[key].product_name %></td>
+                    <td><span class="shoppingCartDelete"><i class="fa fa-trash-o" aria-hidden="true"></i></span><img class="shoppingCartImage" src="<%= products[key].product_image %>"/><span class="shoppingCartProductName"><%= products[key].product_name %></span></td>
                     <td>f<%= products[key].product_price %></li></td>
                     <td><input class="shoppingCartQty" type="number" min="0" value="<%= qty %>" name="qty"></td>
                     <td>f<span class="shoppingCartPrice" data-price=<%= products[key].product_price %> ><%= parseFloat(products[key].product_price * qty).toFixed(2) %></span></td>
-                  <% total += parseInt(products[key].product_price * qty); %>
+                    <% total += parseFloat(products[key].product_price * qty);%>
                   </tr>
                 <% } %>
               <% } %>
             <% } %>
           <% } %>
         </table>
-        Total: <span class="shoppingCartTotalPrice"><%= parseFloat(total).toFixed(2); %></span>
+        <a class="button button" href="/">Continue Shopping</a>
+      </div>
+      <div class="four columns">
+        <table>
+          <tr>
+            <th>ShoppingCart Total<th>
+          </tr>
+          <tr>
+            <td>
+              Subtotaal:
+            </td>
+            <td>
+              f<span class="shoppingCartTotalPrice"><%= total %></span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Total:
+            </td>
+            <td>
+              f<span class="shoppingCartTotalPrice"><%= parseFloat(total).toFixed(2); %></span>
+            </td>
+          </tr>
+        </table>
+        <a href="/checkout" style="width: 100%" class="button checkoutButton button-primary">CheckOut</a>
       </div>
     </div>
     <% } %>
