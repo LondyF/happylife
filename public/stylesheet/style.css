@@ -340,6 +340,30 @@ td > * {
 
 /*<--------------------- Checkout Page---------------------->*/
 
+.checkoutH3{
+  color: black;
+}
+
+.loader{
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 40%;
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 75px;
+  height: 75px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .checkoutInput{
   width: 95%;
   display: block;
@@ -353,6 +377,40 @@ td > * {
   margin-left: 5%;
   margin-right:5%;
   width: 90%;
+}
+
+.checkoutOverlay{
+  display: none;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  /*z-index:1000;*/
+}
+
+.checkoutOverlay h1, h3{
+  color: white;
+}
+
+.checkoutOverlay h1{
+  margin-top: 50px;
+  font-size: 3em;
+}
+
+.error{
+  display: none;
+  width: 93%;
+  height: 30px;
+  padding: 10px;
+  border: 1px solid red;
+  background-color: #FFC5C5;
+  color: black;
+  vertical-align: middle;
+  line-height: 30px;
+  border-radius: 5px;
 }
 
 form button{

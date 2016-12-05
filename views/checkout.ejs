@@ -1,18 +1,22 @@
 <% include ./layout/header %>
-  <h1>Checkout</h1>
+  <h1>  Checkout</h1>
   <% if(shoppingCart.length === 0){ %>
     Your shoppingcart Is Empty!
   <% }else{ %>
+    <div class="checkoutOverlay">
+      <h1>Your order is being placed!</h1>s
+      <h3>This may take a while</h3>
+      <div class="loader"></div>
+    </div>
     <div class="row">
       <div class="seven columns">
       <form class="checkoutForm" action="/checkout" method="POST">
-              <div class="error"></div>
-              <div class="bla">ik hou van kip</div>
-        <h3>Personal information</h3>
+        <h3 class="checkoutH3">Personal information</h3>
+        <div class="error"></div>
         <div class="row">
           <div class="six columns">
           Firstname:
-          <input class="checkoutInput" type="text" name="firstname" placeholder="Firstname" required >
+          <input class="checkoutInput" type="text" name="firstname" placeholder="Firstname"  >
           </div>
           <div class="six columns">
           Lastname:
@@ -27,11 +31,11 @@
         <input class="checkoutInput" type="tel" name="phonenumber"  placeholder="Phonenumber" >
         Adress:
         <input class="checkoutInput" type="text" name="adress"  placeholder="Adress" >
-        <button class="checkOutButton button-primary">Place My Order</button>
+        <button class="checkOutButton button-primary" type="button">Place My Order</button>
       </form>
       </div>
       <div class="five columns">
-        <h3>Your Order!</h3>
+        <h3 class="checkoutH3">Your Order!</h3>
         <table>
           <tr>
             <th>Item</th>

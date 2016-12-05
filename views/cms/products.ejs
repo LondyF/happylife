@@ -1,0 +1,21 @@
+<h1 class="title">All Products</h1>
+<div class="container">
+  <% var count = 1; %>
+  <% products.forEach(function(product){ %>
+    <% if(count % 3 === 1){ %>
+      <div class="row">
+    <% } %>
+    <div class="four columns">
+      <div class="productItem">
+          <div class="overlay"></div>
+          <a href="/show/<%= product.product_name %>"><img src="<%= product.product_image %>" alt="" /></a>
+      </div>
+    </div>
+    <% if(count % 3 === 0){ %>
+      </div>
+    <% } %>
+    <% count++ %>
+  <% }); %>
+  <% if(count % 3 !== 1){ %> </div> <% } %>
+</div>
+</div>

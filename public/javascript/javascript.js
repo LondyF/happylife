@@ -65,7 +65,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: 'POST',
-      url: '/test',
+      url: '/qty',
       dataType: 'JSON',
       data: {qty: valQty, productName: productName},
       succes: function(data){
@@ -94,20 +94,47 @@ $(document).ready(function(){
       });
     });
 
-  $(".bla").hide();
-  var ok = true;
   $('.checkOutButton').on("click", function(e){
+    var counter = 0;
+    var valCounter = 0;
+    var success = true;
+    var allOk = false;
     $('.checkoutInput').each(function(){
       $(this).css("border", "1px solid #D1D1D1");
       if($(this).val().length === 0){
         $(this).css("border", "1px solid red");
-        $('.error').html("Please fill in every");
-        ok = false;
+        $('.error').show();
+        $('.error').html("Please fill in everything");
+        counter--;
       }else{
-        ok = true;
+        counter++;
       }
     });
-    if(ok){
+    if(counter === $('.checkoutInput').length){
+      $('.checkoutInput').each(function(){
+        if($(this).val().length < 3){
+          $('.error').show();
+          $('.error').html($(this).attr("name") + " is too short!");
+          valCounter--;
+        }else{
+          valCounter++;
+        }
+      });
+  }
+    if(counter === $('.checkoutInput').length && valCounter === $('.checkoutInput').length){
+      if($('input[name=email]').val() !== $('input[name=email_confirmation]').val()){
+        $('.error').show();
+        $('.error').html("Email and Email Confirmation do not match!");
+        allOk = false;
+      }else if(isNaN($('input[name=phonenumber]').val())){
+        $('.error').show();
+        $('.error').html("Phonenumber is not a number");
+      }else{
+        allOk = true;
+      }
+    }
+
+    if(allOk){
         e.preventDefault();
       $.ajax({
         type: 'POST',
@@ -116,17 +143,24 @@ $(document).ready(function(){
         dataType: 'JSON',
         beforeSend: function()
         {
-        $(".error").html("l");
-        $(".bla").show();
-        },
-        success: function()
-        {
-        $(".bla").html("Your Order has been placed");
+          $(".checkoutOverlay").fadeIn(300, function(){
+            $(this).show();
+          });
         },
         error: function()
         {
-          $(".bla").html("");
-          $(".error").html("Something went wrong!");
+          success = false;
+          $(".checkoutOverlay").delay(400).fadeOut(300, function(){
+              $(".error").html("Something went wrong!");
+          });
+        },
+        complete: function()
+        {
+          if(success){
+            $(".checkoutOverlay").fadeOut(300, function(){
+              window.location.href = "/path/to/thankyoupage";
+            });
+          }
         },
       });
     }
