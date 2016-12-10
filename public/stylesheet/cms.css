@@ -113,10 +113,77 @@ ul .arrow{
   opacity: 0;
   width: 252px;
   height: 272px;
+  text-align: center;
+vertical-align: middle;
+}
+
+.overlay .fa {
+  padding-right: 8px;
+  text-align: center;
+  font-size: 25px;
+  line-height: 270px;
+  color: white;
+}
+
+.overlay .fa-trash:hover {
+  color: #ff1f1f;
+}
+
+.overlay .fa-pencil:hover{
+  color: yellow;
+}
+
+.overlay .fa-eye:hover{
+  color: #FF6600;
+}
+
+.kip{
+  display: inline-block;
+  height: 270px;
+  width: 250px;
+  background:red;
 }
 
 .productItem:hover .overlay{
   transition: all 0.5s;
   background: rgba(0, 0, 0, .55);
   opacity: 1;
+}
+
+.addProductForm{
+  width: 500px ;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+.addProductForm input{
+  display: block;
+  width: 100%;
+}
+
+.addProductForm .addSizes{
+  display: inline;
+  width: auto;
+}
+
+.sizeCheckBoxes{
+  display: none;
+}
+
+.sizeCheckBoxes input[type='checkbox']{
+  width: auto;
+  display: inline;
+}
+
+.error{
+  display: none;
+  width: 60%;
+  margin: 0 auto;
+  height: 25px;
+  padding: 10px;
+  border: 1px solid red;
+  background-color: #FFC5C5;
+  color: black;
+  vertical-align: middle;
+  line-height: 25px;
+  border-radius: 5px;
 }

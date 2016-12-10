@@ -5,6 +5,7 @@ var session = require('client-sessions');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var nodemailer = require('nodemailer');
+var busboy = require('connect-busboy');
 
 //MODELS
 var Product = require("./models/products.js");
@@ -38,6 +39,8 @@ app.use(session({
 	httpOnly: true,
   secure: true
 }));
+
+app.use(busboy());
 
 var shoppingCart = [];
 
