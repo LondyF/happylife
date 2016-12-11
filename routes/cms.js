@@ -93,7 +93,6 @@ router.post("/deleteproduct/:productname", function(req, res){
     if(err){
       console.log(err);
     }
->>>>>>> add6ce346f2b765733746b8c5965c86be851b5dc
   });
 });
 
