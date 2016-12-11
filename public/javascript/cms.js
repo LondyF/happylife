@@ -37,8 +37,25 @@ $( document ).ready(function() {
           showError("Product price is not a number!", e);
         }
       }
-    });
+    });    
   });
+  $('.mainContent').on( "click", '.deleteproduct', function(e) {  
+   e.preventDefault();
+   var confirmed = false;
+   var productName = $(this).closest(".productItem").data("productname");
+   console.log(productName);
+   $('.confirmOverlay').css("display", "block");
+   $( ".bottomConfirmBox button:first-of-type" ).on("click", function(){
+        $.ajax({
+        type: 'POST',
+        url: '/cms/deleteproduct/' + productName,
+        dataType: 'JSON',
+        success: function(data) {
+        }
+      });
+   });
+  });
+
 
   function showError(errorMessage, e){
     e.preventDefault();

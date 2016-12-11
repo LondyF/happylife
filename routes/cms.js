@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var bodyParser = require('body-parser');
 var busboy = require('connect-busboy');
 var bcrypt = require('bcrypt-node');
 var Product = require('../models/products.js');
@@ -27,13 +27,8 @@ router.get("/addproduct", function(req, res){
 
 router.post("/addproduct", function(req, res){
   var fstream;
-    req.pipe(req.busboy);
-  var productName = req.body.productName;
-  var productImage;
-  var productCategory = req.body.productCategory;
-  var productPrice = req.body.productPrice;
-  var productDescription = req.body.productDescription;
-  var productSizes = [];
+  req.pipe(req.busboy);
+
 
   if(req.body.addSizes ? true : false){
     if(req.body.xsCheckbox ? true : false){
@@ -63,7 +58,16 @@ router.post("/addproduct", function(req, res){
 
     file.pipe(fstream);
     fstream.on('close', function () {
-      productImage = pictureName;
+       productImage = pictureName;
+        });
+    });
+  console.log(productImage);
+  var productName = req.body.productName;
+  var productImage;
+  var productCategory = req.body.productCategory;
+  var productPrice = req.body.productPrice;
+  var productDescription = req.body.productDescription;
+  var productSizes = [];
       var productData = {
         product_name: productName,
         product_image: productImage,
@@ -80,6 +84,16 @@ router.post("/addproduct", function(req, res){
         }
       });
     });
+  });
+});
+
+router.post("/deleteproduct/:productname", function(req, res){
+  var productName = req.params.productname;
+  Product.findOneAndRemove({product_name: productName}, function(err){
+    if(err){
+      console.log(err);
+    }
+>>>>>>> add6ce346f2b765733746b8c5965c86be851b5dc
   });
 });
 
