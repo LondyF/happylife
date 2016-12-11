@@ -72,13 +72,13 @@ router.post("/addproduct", function(req, res){
         product_sizes: productSizes,
         product_category: productCategory
       }
-      // Product.create(productData, function(err, data){
-      //   if(err){
-      //     console.log(err);
-      //   }else{
-      //     console.log(data);
-      //   }
-      // });
+      Product.create(productData, function(err, data){
+        if(err){
+          console.log(err);
+        }else{
+          console.log(data);
+        }
+      });
     });
   });
 });
