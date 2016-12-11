@@ -6,11 +6,13 @@
       <div class="row">
     <% } %>
     <div class="four columns">
-      <div class="productItem">
+      <div class="productItem" data-productname="<%= product.product_name %>">
           <div class="overlay">
             <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <a href=""><i class="fa fa-eye" aria-hidden="true"></i></a>
-            <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <form action="/cms/deleteproduct/<%= product.product_name %>" method="POST">
+            <button class="fa deleteproduct fa-trash" aria-hidden="true"></button>
+            </form>
           </div>
           <a href="/show/<%= product.product_name %>"><img src="<%= product.product_image %>" alt="" /></a>
       </div>
