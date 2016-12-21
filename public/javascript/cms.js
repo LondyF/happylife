@@ -43,23 +43,33 @@ $( document ).ready(function() {
    e.preventDefault();
    var confirmed = false;
    var productName = $(this).closest(".productItem").data("productname");
-   console.log(productName);
+   var item = $(this).closest(".productItem");
+   $('.confirmOverlay').fadeIn(300);
    $('.confirmOverlay').css("display", "block");
-   $( ".bottomConfirmBox button:first-of-type" ).on("click", function(){
+   $( ".bottomConfirmBox button:first-of-type" ).on("click", function(e){
         $.ajax({
         type: 'POST',
-        url: '/cms/deleteproduct/' + productName,
+        url: 'cms/deleteproduct/' + productName,
         dataType: 'JSON',
-        success: function(data) {
+        complete: function(){
+         $('.confirmOverlay').fadeOut(500);
+         console.log(item.children());
+         item.children(".deleted").css("display", "block");
+         item.children(".overlay").css("display", "none");
         }
-      });
-   });
+      }); 
   });
 
+  $( ".bottomConfirmBox button:nth-of-type(2)" ).on("click", function(){
+    $('.confirmOverlay').fadeOut(500, function(){
+    $('.confirmOverlay').css("display", "none");
+    });
+  });
 
   function showError(errorMessage, e){
     e.preventDefault();
     $('.error').show();
     $('.error').html(errorMessage);
   }
+  });
 });

@@ -200,6 +200,18 @@ ul .arrow{
   color: white;
 }
 
+.deleted{
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  height: 25px;
+  width: 100%;
+  color:white;
+  text-align: center;
+
+}
 .overlay .fa-trash:hover {
   color: #ff1f1f;
 }

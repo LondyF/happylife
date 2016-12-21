@@ -7,6 +7,7 @@
     <% } %>
     <div class="four columns">
       <div class="productItem" data-productname="<%= product.product_name %>">
+         <div class = "deleted">This item has been deleted</div>
           <div class="overlay">
             <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
             <a href=""><i class="fa fa-eye" aria-hidden="true"></i></a>
@@ -14,7 +15,7 @@
             <button class="fa deleteproduct fa-trash" aria-hidden="true"></button>
             </form>
           </div>
-          <a href="/show/<%= product.product_name %>"><img src="../products/<%= product.product_image %>" alt="" /></a>
+          <a class="goToProduct" href="/show/<%= product.product_name %>"><img src="<%= product.product_image %>" alt="" /></a>
       </div>
     </div>
     <% if(count % 3 === 0){ %>
