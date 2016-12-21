@@ -1,11 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
 var busboy = require('connect-busboy');
 var bcrypt = require('bcrypt-node');
+var multer = require('multer');
 var Product = require('../models/products.js');
 
 var fs = require('fs');
+var path = require('path');
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null,path.join('public', 'products'))
+  },
+  filename: function (req, file, cb) {
+    var filenames = bcrypt.hashSync(file.originalname);
+    var filename = filenames.replace(/[/.]/g, 'n65');
+
+    cb(null, filename + '.png') //Appending .jpg
+  }
+});
+
 
 router.get("/", function(req, res){
   res.render("cms/index");
@@ -25,10 +39,17 @@ router.get("/addproduct", function(req, res){
   res.render("cms/add_products");
 });
 
-router.post("/addproduct", function(req, res){
-  var fstream;
-  req.pipe(req.busboy);
+var upload = multer({ storage: storage })
 
+router.post("/addproduct", upload.single('file'), function(req, res){
+  console.log(req.body);
+    console.log(req.file.filename);
+  var productName = req.body.productName;
+  var productImage = req.file.filename;
+  var productCategory;
+  var productPrice = req.body.productPrice;
+  var productDescription = req.body.productDescription;
+  var productSizes = [];
 
   if(req.body.addSizes ? true : false){
     if(req.body.xsCheckbox ? true : false){
@@ -48,34 +69,16 @@ router.post("/addproduct", function(req, res){
     }
   }
 
-   req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
 
-    var filenames = bcrypt.hashSync(filename);
+  var productData = {
+    product_name: productName,
+    product_image: productImage,
+    product_description: productDescription,
+    product_price: productPrice,
+    product_sizes: productSizes,
+    product_category: productCategory
+  }
 
-    var pictureName = filenames.replace(/[/.]/g, 'n65');
-
-		fstream = fs.createWriteStream('public/products/' + pictureName + '.png');
-
-    file.pipe(fstream);
-    fstream.on('close', function () {
-       productImage = pictureName;
-        });
-    });
-  console.log(productImage);
-  var productName = req.body.productName;
-  var productImage;
-  var productCategory = req.body.productCategory;
-  var productPrice = req.body.productPrice;
-  var productDescription = req.body.productDescription;
-  var productSizes = [];
-      var productData = {
-        product_name: productName,
-        product_image: productImage,
-        product_description: productDescription,
-        product_price: productPrice,
-        product_sizes: productSizes,
-        product_category: productCategory
-      }
       Product.create(productData, function(err, data){
         if(err){
           console.log(err);
@@ -83,9 +86,9 @@ router.post("/addproduct", function(req, res){
           console.log(data);
         }
       });
-    });
-  });
+
 });
+
 
 router.post("/deleteproduct/:productname", function(req, res){
   var productName = req.params.productname;
