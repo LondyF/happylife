@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var nodemailer = require('nodemailer');
 var busboy = require('connect-busboy');
-var multer = require('multer');
 
 //MODELS
 var Product = require("./models/products.js");
