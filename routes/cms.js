@@ -86,12 +86,14 @@ router.post("/addproduct", function(req, res){
 });
 
 router.post("/deleteproduct/:productname", function(req, res){
+  console.log("been here");
   var productName = req.params.productname;
   Product.findOneAndRemove({product_name: productName}, function(err){
     if(err){
       console.log(err);
     }
   });
+res.end();
 });
 
 module.exports = router;
