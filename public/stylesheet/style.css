@@ -189,13 +189,14 @@ body, html {
 .arrow a:hover {
   color: #1EAEDB;
 }
-
 /*<--------------------- Webshop Section ---------------------->*/
 
 #webshopSection{
   height: auto;
   box-shadow: 0 4px 2px -2px gray;
 }
+
+
 
 .title {
   position: relative;
@@ -275,6 +276,21 @@ body, html {
 .productPrice{
   font-size: 21px;
   color: #386296;
+}
+
+/*<--------------------- service Section ---------------------->*/
+
+#serviceSection {
+  background: #1e1e23;
+  height: 500px;
+}
+
+#serviceSection .serviceTitle{
+  text-align: center;
+  font-size: 300;
+  line-height: 2.5;
+  font-size: 35px;
+  color: white;
 }
 
 /*<--------------------- Show Page ---------------------->*/
@@ -417,6 +433,11 @@ form button{
   width: 75%;
 }
 
+.four.columns{
+  width: 33.33333333333333%;
+}
+
+
 /*<--------------------- Different Sizes Queries ---------------------->*/
 
 @media (max-width: 750px) {
@@ -450,23 +471,3 @@ form button{
     margin-top: 5px;
     font-size: 50px;
   }
-
-
-
-/*<----------Service Section-------->*/
-#serviceSection{
-  padding-top: 17px;
-  background-color: #eee;
-}
-#serviceSection .serviceContainer{
-  margin: 0 auto;
-  width: 80%;
-  height: 10000px;
-  background-color: white;
-  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5);
-}
-
-#serviceSection .serviceContainer div{
-  text-align: center;
-  border: 1px solid red;
-}
