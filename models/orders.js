@@ -9,7 +9,8 @@ var orderSchema = new Schema({
   email: {type: String},
   phoneNumber: {type: String},
   adress: {type: String},
-  items: []
+  items: [],
+  delivery: {type: String, enum : ['yes', 'no'], default: 'no'} 
 });
 
 module.exports = mongoose.model("Order", orderSchema);

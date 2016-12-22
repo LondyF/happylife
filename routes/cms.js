@@ -4,6 +4,7 @@ var busboy = require('connect-busboy');
 var bcrypt = require('bcrypt-node');
 var multer = require('multer');
 var Product = require('../models/products.js');
+var Orders = require("../models/orders.js");
 
 var fs = require('fs');
 var path = require('path');
@@ -99,6 +100,36 @@ router.post("/deleteproduct/:productname", function(req, res){
     }
   });
 res.end();
+});
+
+router.get("/orders", function(req, res){
+  Orders.find({}, function(err, orders){
+    console.log(orders);
+    if(err){
+      console.log(err);
+    }
+
+  res.render("cms/orders", {orders: orders})
+  });
+});
+
+router.post("/orders/delivered/:id", function(req, res){
+  Orders.findById(req.params.id, function(err, order){
+    if(err){
+      console.log(err);
+    }else{
+      if(order.delivery === 'no'){
+          Orders.findByIdAndUpdate(req.params.id, {delivery: 'yes'}, function(err){
+           res.send("Yes");
+          });
+        
+      }else{
+        Orders.findByIdAndUpdate(req.params.id, {delivery: 'no'}, function(err){
+          res.send("No")
+        });
+      }
+    }
+  });
 });
 
 module.exports = router;

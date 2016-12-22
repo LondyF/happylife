@@ -283,3 +283,21 @@ ul .arrow{
   line-height: 25px;
   border-radius: 5px;
 }
+
+/*====================================================Orders========================================================================*/
+
+.orders .fa{
+  color:black;
+}
+
+.orders .not_delivered{
+  color:black;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.orders .not_delivered:hover{
+  color: rgba(11, 111, 11, 1);
+}
+.orders .delivered{
+  color: rgba(11, 111, 11, 1);
+}

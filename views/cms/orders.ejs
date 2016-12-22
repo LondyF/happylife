@@ -1,0 +1,27 @@
+<h1 class = "title">Orders</h1>
+<div class = "container">
+    <table class="orders">
+    <tr>
+        <th>firstname's</th>
+        <th>lastname</th>
+        <th>orderplaced</th>
+        <th>actions</th>
+    </tr>
+    <% orders.forEach(function(order){ %>
+        <tr data-id = "<%= order._id %>" >
+            <td><%= order.firstName %></td>
+            <td><%= order.lastName %></td>
+            <td><%= order.order_placed.toDateString(); %></td>
+            <td>
+                <a href=""><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <% if(order.delivery === "yes"){ %>
+                    <a href=""><i class="fa fa-check delivered" aria-hidden="true"></i></a>  
+                <% }else{ %>
+                    <a href=""><i class="fa fa-check not_delivered" aria-hidden="true"></i></a>  
+               <% } %>
+            </td> 
+
+        </tr>
+    <% }); %>
+    </table>    
+</div>

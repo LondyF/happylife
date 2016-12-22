@@ -11,6 +11,12 @@ $( document ).ready(function() {
     $( ".mainContent" ).load("/cms/addproduct");
   });
 
+    $('.allOrders').on('click', function(){
+    $( ".mainContent" ).load("/cms/orders");
+  });
+  
+
+
   $('.mainContent').on( "click", '.addSizes', function() {
     if($('.addSizes').prop("checked")){
       $('.sizeCheckBoxes').show();
@@ -72,4 +78,27 @@ $( document ).ready(function() {
     $('.error').html(errorMessage);
   }
   });
+   $('.mainContent').on( "click", '.fa-check', function(e) { 
+      
+   e.preventDefault();
+   var id = $(this).closest("tr").data("id");
+   console.log(id);
+        $.ajax({
+        type: 'POST',
+        url: 'cms/orders/delivered/' + id,
+        dataType: 'JSON',
+        complete: function(data){
+          if(data.responseText === "Yes"){
+            console.log($(this).val());
+            $('.fa-check').addClass("delivered");
+            $('.fa-check').removeClass("not_delivered");
+          }else{
+            $('.fa-check').addClass("not_delivered");
+            $('.fa-check').removeClass("delivered");
+          }
+        }
+       }); 
+  });
+
+  
 });
