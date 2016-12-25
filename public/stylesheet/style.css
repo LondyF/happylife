@@ -189,13 +189,14 @@ body, html {
 .arrow a:hover {
   color: #1EAEDB;
 }
-
 /*<--------------------- Webshop Section ---------------------->*/
 
 #webshopSection{
   height: auto;
   box-shadow: 0 4px 2px -2px gray;
 }
+
+
 
 .title {
   position: relative;
@@ -276,6 +277,174 @@ body, html {
   font-size: 21px;
   color: #386296;
 }
+
+/*<--------------------- service Section ---------------------->*/
+
+#serviceSection {
+  background: #1e1e23;
+  height: 500px;
+  color: white;
+}
+
+#serviceSection h1, h3{
+  text-align: center;
+  font-size: 300;
+  line-height: 2.5;
+  font-size: 35px;
+  color: white;
+  margin-bottom: 2px;
+  text-shadow: -0.5px 0.5px 1px rgba(202, 202, 202, 0.5);
+}
+
+#serviceSection h3{
+  font-size: 28px;
+}
+
+#serviceSection p{
+  text-align: center;
+  color: white;
+}
+
+.serviceColumn{
+  text-align: center;
+}
+
+h6{
+  color: #46BCDE;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2px;
+  letter-spacing: 1px;
+}
+
+.serviceSectionIcon{
+  text-align: center;
+  color: white;
+  font-size: 65px;
+}
+
+/*<--------------------- AboutUs Section ---------------------->*/
+
+#aboutUsSection{
+  height: 600px;
+  background: white;
+}
+
+/*<--------------------- ContactUs Section ---------------------->*/
+#contactUsSection{
+  background: #1e1e23;
+  height: 550px;
+  color: white;
+  padding-top: 25px;
+}
+
+#contactUsSection h1, h3{
+  font-size: 300;
+  line-height: 2.5;
+  font-size: 35px;
+  color: white;
+  margin-bottom: 2px;
+  text-shadow: -0.5px 0.5px 1px rgba(202, 202, 202, 0.5);
+}
+
+#contactUsSection h6{
+  text-align: left;
+}
+
+#contactUsSection p{
+  font-size: 13px;
+  width: 80%;
+}
+
+#contactUsSection .container{
+  max-width: none;
+  width: 90%;
+}
+
+#contactUsSection .socialmediaIcons{
+  font-size: 25px;
+  letter-spacing: 2.5px;
+  line-height: 0;
+}
+
+#contactUsSection .socialmediaIcons:hover{
+  transition: 0.5s all;
+  color: red;
+}
+
+#contactUsSection .mainText{
+  font-weight: 300;
+  font-size: 1.25em;
+  line-height: 1.55em;
+  margin-bottom: 35px;
+}
+
+.content{
+  margin-top: 25px;
+}
+
+.titleIcon{
+  margin-top: 2px;
+  font-size: 35px;
+  padding-right: 10px;
+}
+
+.contactForm {
+  margin: 0 auto;
+  margin-top: 130px;;
+  width: 500px;
+}
+
+.contactForm input, textarea{
+  color: white;
+  display: block;
+  border-radius: 0;
+  width: 500px;
+  background: none;
+  border: none;
+  border-bottom: solid 2px white;
+  overflow: hidden;
+  resize: none;
+}
+
+.contactForm input:focus{
+  border: none;
+  border-bottom: 2px solid #46BCDE;
+  outline: none;
+  animation-name: test;
+  animation-duration: 0.8s;
+}
+.contactForm textarea:focus{
+  border: none;
+  border-bottom: 2px solid #46BCDE;
+  outline: none;
+  animation-name: test;
+  animation-duration: 0.8s;
+}
+
+@keyframes test {
+  from {
+    width: 0px;
+    margin-left: 250px;
+  }
+  to {
+    width: 500px;
+    margin-left: 0px;
+  }
+}
+
+.contactForm button {
+  background: #177a96;
+  color: white;
+  border-radius: 0;
+  width: 500px;
+  float: right;
+  border-color: #13576b;
+  box-shadow: 4px 4px 5px 0px rgba(8, 8, 8, 0.19);
+
+}
+
 
 /*<--------------------- Show Page ---------------------->*/
 .titleShowPage{
@@ -417,6 +586,11 @@ form button{
   width: 75%;
 }
 
+.four.columns{
+  width: 33.33333333333333%;
+}
+
+
 /*<--------------------- Different Sizes Queries ---------------------->*/
 
 @media (max-width: 750px) {
@@ -450,23 +624,3 @@ form button{
     margin-top: 5px;
     font-size: 50px;
   }
-
-
-
-/*<----------Service Section-------->*/
-#serviceSection{
-  padding-top: 17px;
-  background-color: #eee;
-}
-#serviceSection .serviceContainer{
-  margin: 0 auto;
-  width: 80%;
-  height: 10000px;
-  background-color: white;
-  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.5);
-}
-
-#serviceSection .serviceContainer div{
-  text-align: center;
-  border: 1px solid red;
-}

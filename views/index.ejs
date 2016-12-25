@@ -6,8 +6,8 @@
             <li><a href="#webshopSection">Webshop</a></li>
             <li><a href="#serviceSection">Service</a></li>
             <li><a href="#"><i class="fa fa-home" aria-hidden="true"></a></i></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="#aboutUsSection">About Us</a></li>
+            <li><a href="#contactUsSection">Contact Us</a></li>
           </ul>
         </div>
         <span class="shoppingCart"><a href="/shoppingCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><%= shoppingCart.length %></a></span>
@@ -17,30 +17,111 @@
     </div>
     <section id="webshopSection">
       <div class="container">
-        <h1 class="title"><span>Webshop</span></h1>
-        <% var count = 1; %>
-        <% products.forEach(function(product){ %>
-          <% if(count % 3 === 1){ %>
-            <div class="row">
-          <% } %>
-          <div class="four columns">
-            <div class="webshopItem">
-              <a href="/show/<%= product.product_name %>"><img src=" /products/<%= product.product_image %>" alt="" /></a>
-              <small><%= product.product_category %></small>
-              <h5 class="productName"><a href="/show/<%= product.product_name %>"><%= product.product_name %></a></h5>
-              <h4 class="productPrice">f<%= product.product_price %></h4>
-              <a class="button button-primary" href="/show/<%= product.product_name %>">buy now</a>
+          <div class="webshopSectionContent">
+          <h1 class="title"><span>Webshop</span></h1>
+          <% var count = 1; %>
+          <% products.forEach(function(product){ %>
+            <% if(count % 3 === 1){ %>
+              <div class="row">
+            <% } %>
+            <div class="four columns">
+              <div class="webshopItem">
+                <a href="/show/<%= product.product_name %>"><img src=" /products/<%= product.product_image %>" alt="" /></a>
+                <small><%= product.product_category %></small>
+                <h5 class="productName"><a href="/show/<%= product.product_name %>"><%= product.product_name %></a></h5>
+                <h4 class="productPrice">f<%= product.product_price %></h4>
+                <a class="button button-primary" href="/show/<%= product.product_name %>">buy now</a>
+              </div>
+            </div>
+            <% if(count % 3 === 0){ %>
+              </div>
+            <% } %>
+            <% count++ %>
+          <% }); %>
+          <% if(count % 3 !== 1){ %> </div> <% } %>
+        </div>
+      </div>
+    </section>
+    <section id="serviceSection">
+    <div class="container">
+      <h1>How it Works!</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum condimentum lorem ac sagittis.
+        In ac ante at metus auctor tempor eu eu neque. Sed a metus non purus varius.
+        Praesent sed sodales dolor, eu pulvinar leo. Curabitur tempor tellus et ligula sollicitudin aliquet.
+      </p>
+      <div class="row">
+        <div class="four columns serviceColumn">
+          <h6>Fast, Good And Cool</h6>
+          <span  class="serviceSectionIcon"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></span>
+          <p>
+            In ac ante at metus auctor tempor eu eu neque. Sed a metus non purus varius.
+          </p>
+        </div>
+        <div class="four columns serviceColumn">
+          <h6>Almost 24/7 Support!</h6>
+          <span  class="serviceSectionIcon"><i class="fa fa-phone" aria-hidden="true"></i></i></span>
+          <p>
+            In ac ante at metus auctor tempor eu eu neque. Sed a metus non purus varius.
+          </p>
+        </div>
+        <div class="four columns serviceColumn">
+          <h6>Not Happy? Money Back!</h6>
+          <span  class="serviceSectionIcon"><i class="fa fa-money" aria-hidden="true"></i></span>
+          <p>
+            In ac ante at metus auctor tempor eu eu neque. Sed a metus non purus varius.
+          </p>
+        </div>
+      </div>
+      <h3>Come And Make Your Order!</h3>
+    </div>
+    </section>
+    <section id="aboutUsSection">
+      <div class="container">
+        <h1 class="title">What Is HappyLife?</h1>
+      </div>
+    </section>
+    <section id="contactUsSection">
+      <div class="container">
+        <div class="row">
+            <div class="six columns">
+              <h1>Contact Us!</h1>
+              <p class="mainText">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <div>
+                <h6><span class="titleIcon"><i class="fa fa-phone" aria-hidden="true"></i></span>Find Us!</h6>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+              <div>
+                <h6><span class="titleIcon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>Call Us!</h6>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+            </div>
+            <div class="six columns">
+              <div class="contactForm">
+                <input type="text" name="" value="" placeholder="Name">
+                <input type="text" name="" value="" placeholder="Email">
+                <textarea name="name" rows="8" cols="80" placeholder="Message"></textarea>
+                <button>Contact Us</button>
+              </div>
             </div>
           </div>
-          <% if(count % 3 === 0){ %>
+          <div class="row">
+            <div class="twelve columns">
+              <div class="socialmediaIcons">
+                <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                <i class="fa fa-google-plus-square" aria-hidden="true"></i>
+              </div>
             </div>
-          <% } %>
-          <% count++ %>
-        <% }); %>
-        <% if(count % 3 !== 1){ %> </div> <% } %>
+          </div>
       </div>
     </section>
 <% include ./layout/footer %>
-    <% include service %>
   </body>
 </html>
