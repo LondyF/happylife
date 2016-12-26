@@ -1,4 +1,4 @@
-<h1 class = "title">Orders</h1>
+<h1 class = "title">Newest Orders</h1>
 <div class = "container">
     <table class="orders">
     <tr>
@@ -7,7 +7,8 @@
         <th>orderplaced</th>
         <th>actions</th>
     </tr>
-    <% orders.forEach(function(order){ %>
+    <% console.log(newOrders.length) %>;
+    <% newOrders.forEach(function(order){ %>
         <tr data-id = "<%= order._id %>" >
             <td><%= order.firstName %></td>
             <td><%= order.lastName %></td>

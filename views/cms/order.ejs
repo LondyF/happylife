@@ -1,0 +1,54 @@
+<h1 class="title">Order</h1>
+<div class="container">
+    <div class="row">
+        <div class="two columns">
+            <div class = "contactDetails">
+            <h6>Contact details</h6>
+            <strong>firstname:</strong>
+            <%= order.firstName %></br>
+            <strong>lastname:</strong>
+            <%= order.lastName %></br>
+            <strong>adress:</strong>
+            <%=order.adress %></br>
+            <strong>phonenumber:</strong>
+            <%=order.phoneNumber %></br>
+        </div>
+    </div>
+        <div class="ten columns">
+            <table class="orders">
+            <tr>
+                <th>product image</th>
+                <th>porduct price</th>
+                <th>qty</th>
+                <th>subtotal</th>
+            </tr>
+        <h6>Items</h6>
+        <% for(var i = 0; i < order.items.length; i++){ %>
+            <% for(var key in products){ %>
+              <% if(products.hasOwnProperty(key)){ %>
+              <%= console.log(order.items[i]); %>
+                <% if(products[key].product_name === order.items[i]){ %>
+                <% var qty = countInArray(order.items[i], products[key].product_name); %> 
+                console.log(qty);
+                    <tr>
+                        <td><img class="shoppingCartImage" src="products/<%= products[key].product_image %>" alt=""></td>
+                        <td>fl<%= products[key].product_price %></td>
+                        <td><%= qty %></td>
+                    </tr>
+                <% } %>
+              <% } %>
+            <% } %>
+          <% } %>
+        </div>
+    </div>
+</div>
+
+  <% function countInArray(array, productName) { %>
+  <% var count = 0; %>
+    <% for (var i = 0; i < array.length; i++) { %>
+      <% if (array[i] === productName) { %>
+        <% count++; %>
+      <% } %>
+    <% } %>
+    <% return count; %>
+  <% } %>

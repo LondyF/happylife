@@ -10,7 +10,8 @@ var orderSchema = new Schema({
   phoneNumber: {type: String},
   adress: {type: String},
   items: [],
-  delivery: {type: String, enum : ['yes', 'no'], default: 'no'} 
+  delivery: {type: String, enum : ['yes', 'no'], default: 'no'},
+  newOrder: {type: String, enum : ['yes', 'no'], default: 'yes'}
 });
 
 module.exports = mongoose.model("Order", orderSchema);
