@@ -301,3 +301,21 @@ ul .arrow{
 .orders .delivered{
   color: rgba(11, 111, 11, 1);
 }
+
+.amountOfNewOrders{
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  border-radius: 30px;
+  background-color: rgb(39, 82, 125);
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.shoppingCartImage{
+  height: 125px;
+  margin-right: 25px;
+  margin-left: 10px;
+}

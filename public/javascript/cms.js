@@ -14,6 +14,17 @@ $( document ).ready(function() {
     $('.allOrders').on('click', function(){
     $( ".mainContent" ).load("/cms/orders");
   });
+
+   $('.newOrder').on('click', function(){
+  $( ".mainContent" ).load("/cms/neworders");
+  });
+
+    $('.mainContent').on( "click", '.fa-eye', function(e) { 
+      e.preventDefault();
+      var id = $(this).closest("tr").data("id");
+      $( ".mainContent" ).load("/cms/orders/" + id);
+  });
+
   
 
 
@@ -52,7 +63,7 @@ $( document ).ready(function() {
    var item = $(this).closest(".productItem");
    $('.confirmOverlay').fadeIn(300);
    $('.confirmOverlay').css("display", "block");
-   $( ".bottomConfirmBox button:first-of-type" ).on("click", function(e){
+   $( ".confirmed" ).on("click", function(e){
         $.ajax({
         type: 'POST',
         url: 'cms/deleteproduct/' + productName,
@@ -79,22 +90,21 @@ $( document ).ready(function() {
   }
   });
    $('.mainContent').on( "click", '.fa-check', function(e) { 
-      
-   e.preventDefault();
-   var id = $(this).closest("tr").data("id");
-   console.log(id);
+    e.preventDefault();
+    var id = $(this).closest("tr").data("id");
+    var item = $(this).closest(".fa");
         $.ajax({
         type: 'POST',
         url: 'cms/orders/delivered/' + id,
         dataType: 'JSON',
         complete: function(data){
+          console.log(item)
           if(data.responseText === "Yes"){
-            console.log($(this).val());
-            $('.fa-check').addClass("delivered");
-            $('.fa-check').removeClass("not_delivered");
+            item.addClass("delivered");
+            item.removeClass("not_delivered");
           }else{
-            $('.fa-check').addClass("not_delivered");
-            $('.fa-check').removeClass("delivered");
+           item.addClass("not_delivered");
+           item.removeClass("delivered");
           }
         }
        }); 

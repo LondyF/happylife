@@ -23,7 +23,12 @@ var storage = multer.diskStorage({
 
 
 router.get("/", function(req, res){
-  res.render("cms/index");
+  Orders.find({newOrder: 'yes'}, function(err, newOrders){
+    if(err){
+      console.log(err)
+    }
+    res.render("cms/index", {newOrders: newOrders});
+  });
 });
 
 router.get("/showproducts", function(req, res){
@@ -113,6 +118,15 @@ router.get("/orders", function(req, res){
   });
 });
 
+router.get("/neworders", function(req, res){
+  Orders.find({newOrder: 'yes'}, function(err, newOrders){
+    if(err){
+      console.log(err)
+    }
+    res.render("cms/neworders", {newOrders: newOrders});
+  });
+});
+
 router.post("/orders/delivered/:id", function(req, res){
   Orders.findById(req.params.id, function(err, order){
     if(err){
@@ -131,5 +145,25 @@ router.post("/orders/delivered/:id", function(req, res){
     }
   });
 });
+
+router.get("/orders/:id", function(req, res){
+  Orders.findById(req.params.id, function(err, order){
+    if(err){
+      console.log(err);
+    }else{
+      if(order.newOrder === "yes"){
+         Orders.findByIdAndUpdate(req.params.id, {newOrder: 'no'}, function(err){
+           if(err){
+             console.log(err);
+           }
+       });
+    }
+    Product.find({}, function(err, products){
+      res.render("cms/order", {order: order, products: products});
+      });
+    }
+  });
+});  
+
 
 module.exports = router;
