@@ -14,31 +14,41 @@
             <%=order.phoneNumber %></br>
         </div>
     </div>
+     <% var total = 0; %>
         <div class="ten columns">
             <table class="orders">
             <tr>
                 <th>product image</th>
+                <th>product name</th>
                 <th>porduct price</th>
                 <th>qty</th>
                 <th>subtotal</th>
             </tr>
         <h6>Items</h6>
-        <% for(var i = 0; i < order.items.length; i++){ %>
+        <% var orderFilter = order.items.filter(function(elem, pos) { %>
+            <% return order.items.indexOf(elem) == pos; %>
+         <% });%>
+        <% for(var i = 0; i < orderFilter.length; i++){ %>
             <% for(var key in products){ %>
               <% if(products.hasOwnProperty(key)){ %>
-              <%= console.log(order.items[i]); %>
-                <% if(products[key].product_name === order.items[i]){ %>
-                <% var qty = countInArray(order.items[i], products[key].product_name); %> 
-                console.log(qty);
-                    <tr>
+                <% if(products[key].product_name === orderFilter[i]){ %>
+                    <tr> 
+                    <% var qty = countInArray(order.items, products[key].product_name); %>                      
                         <td><img class="shoppingCartImage" src="products/<%= products[key].product_image %>" alt=""></td>
+                        <td><%= products[key].product_name %></td>
                         <td>fl<%= products[key].product_price %></td>
-                        <td><%= qty %></td>
+                        <td> <%= qty %></td>
+                        <td><%= parseFloat(products[key].product_price * qty).toFixed(2) %></td>
+                        <% total += parseFloat(products[key].product_price * qty);%>
+
                     </tr>
                 <% } %>
               <% } %>
             <% } %>
           <% } %>
+          f<span><%= parseFloat(total).toFixed(2); %></span>
+          </table>
+
         </div>
     </div>
 </div>
@@ -50,5 +60,7 @@
         <% count++; %>
       <% } %>
     <% } %>
+    <% console.log(count) %>
     <% return count; %>
+
   <% } %>

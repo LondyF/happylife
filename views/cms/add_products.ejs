@@ -4,7 +4,12 @@
   <form class="addProductForm" action="/cms/addproduct" method="POST" enctype="multipart/form-data">
     <input type="text" class="addProductInput" name="productName"  placeholder="Product Name">
     <input type="text" class="addProductInput" name="productPrice" placeholder="Product Price">
-    <input type="text" class="addProductInput" name="productCategory" placeholder="Product Category">
+    <select class="addProductInput" name="productCategory">
+      <option selected disabled>Select your category</option>
+      <% categories.forEach(function(category){ %>
+      <option><%= category.category_name %></option>
+      <% }); %>
+    </select>
     <textarea class="u-full-width addProductInput" name="productDescription" placeholder="Product Description"></textarea>
     <strong>Add Sizes:</strong> <input class="addSizes" value='addSizes' type="checkbox" name="addSizes">
     <div class="sizeCheckBoxes">

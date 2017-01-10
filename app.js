@@ -10,6 +10,7 @@ var busboy = require('connect-busboy');
 //MODELS
 var Product = require("./models/products.js");
 var Order = require("./models/orders.js");
+var Category = require("./models/category.js");
 
 //ROUTES
 var indexRoute = require('./routes/index.js');

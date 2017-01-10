@@ -1,0 +1,16 @@
+<h1 class="title">Edit category</h1>
+<div class="container">
+  <div class="error"></div>
+  <%= console.log(category._id ); %>
+  <form class="addProductForm" action="/cms/editcategory/<%=category._id %>" method="POST">
+    <input type="text" class="categoryname  categoryInput" value="<%= category.category_name %>" name="categoryName"  placeholder="Category Name">
+    <textarea class="u-full-width categoryInput" name="categoryDescription" placeholder="Category Description"><%= category.category_description %></textarea>
+    <button class="button-primary editcategorybtn">Add Category</button>
+    <% if(category.public === "yes"){ %>
+        Public: <input type="checkbox" name="public" checked>
+    <% }else{ %>
+        Public: <input type="checkbox" name="public">
+    <% } %>
+    
+  </form>
+</div>

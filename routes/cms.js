@@ -5,6 +5,7 @@ var bcrypt = require('bcrypt-node');
 var multer = require('multer');
 var Product = require('../models/products.js');
 var Orders = require("../models/orders.js");
+var Category = require("../models/category.js");
 
 var fs = require('fs');
 var path = require('path');
@@ -23,6 +24,9 @@ var storage = multer.diskStorage({
 
 
 router.get("/", function(req, res){
+  res.render("cms/adminlogin");
+});
+router.get("/index", function(req, res){
   Orders.find({newOrder: 'yes'}, function(err, newOrders){
     if(err){
       console.log(err)
@@ -42,7 +46,12 @@ router.get("/showproducts", function(req, res){
 });
 
 router.get("/addproduct", function(req, res){
-  res.render("cms/add_products");
+  Category.find({}, function(err, categories){
+    if(err){
+      console.log(err);
+    }
+    res.render("cms/add_products", {categories: categories});
+  });
 });
 
 var upload = multer({ storage: storage })
@@ -52,7 +61,7 @@ router.post("/addproduct", upload.single('file'), function(req, res){
     console.log(req.file.filename);
   var productName = req.body.productName;
   var productImage = req.file.filename;
-  var productCategory;
+  var productCategory = req.body.productCategory;
   var productPrice = req.body.productPrice;
   var productDescription = req.body.productDescription;
   var productSizes = [];
@@ -163,7 +172,74 @@ router.get("/orders/:id", function(req, res){
       });
     }
   });
-});  
+});
+
+router.get("/categories", function(req, res){
+  Category.find({}, function(err, category){
+    if(err){
+      console.log(err)
+    }
+  res.render("cms/categories", {category: category});
+  });
+});
 
 
+router.post("/deletecategory/:id", function(req, res){
+  var id = req.params.id;
+  Category.findByIdAndRemove(id, function(err){
+    if(err){
+      console.log(err);
+    }
+  });
+res.end();
+});
+
+
+router.get("/addcategory", function(req, res){
+  res.render("cms/add_category");
+});
+
+router.post("/addcategory", function(req, res){
+  var public;
+  if(req.body.public ? true : false){
+    public = "yes";
+  }else{
+    public = "no";
+  }
+  Category.create({category_name: req.body.categoryName, category_description: req.body.categoryDescription, public}, function(err, category){
+    if(err){
+      console.log(err);
+    }
+
+  });
+  // res.end()
+});
+
+router.get("/editcategory/:id", function(req, res){
+  Category.findById(req.params.id, function(err, category){
+    if(err){
+      console.log(err);
+    }
+
+    res.render("cms/editcategory", {category: category});
+  });
+});
+
+router.post("/editcategory/:id", function(req, res){
+  if(req.body.public ? true : false){
+    public = "yes";
+  }else{
+    public = "no";
+  }
+  var categoryData = {
+  category_name: req.body.categoryName,
+  category_description: req.body.categoryDescription,
+  public: public
+  }
+  Category.findByIdAndUpdate(req.params.id, categoryData, function(err, category){
+    if(err){
+      console.log(err);
+    }
+  });
+});
 module.exports = router;

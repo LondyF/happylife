@@ -1,3 +1,4 @@
+/*====================================================General========================================================================*/
 body, html{
   font-family: 'Open Sans', sans-serif;
   margin: 0;
@@ -5,6 +6,12 @@ body, html{
   font-size: 15px;
   overflow: auto;
 }
+
+
+#adminLogin{
+  background: #2c3e50;
+}
+
 
 .page{
   min-height: 100%;
@@ -258,7 +265,7 @@ ul .arrow{
 
 .addProductForm .addSizes{
   display: inline;
-  width: auto;
+  /*width: auto;*/
 }
 
 .sizeCheckBoxes{
@@ -266,8 +273,17 @@ ul .arrow{
 }
 
 .sizeCheckBoxes input[type='checkbox']{
-  width: auto;
+  /*width: auto;*/
   display: inline;
+}
+
+input[type='checkbox']{
+  width: auto;
+  display: inline-block;
+}
+
+select{
+  width: 100%;
 }
 
 .error{
@@ -283,6 +299,8 @@ ul .arrow{
   line-height: 25px;
   border-radius: 5px;
 }
+
+
 
 /*====================================================Orders========================================================================*/
 
