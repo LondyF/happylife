@@ -1,0 +1,29 @@
+<h1 class="title">Editing Product <%= product.product_name %></h1>
+<div class="container">
+  <div class="error"></div>
+  <form class="addProductForm" action="/cms/edit_product/<%= product._id %>" method="POST">
+    <input type="text" class="addProductInput" name="productName" value="<%= product.product_name %>"  placeholder="Yellow shirt">
+    <input type="text" class="addProductInput" name="productPrice" value="<%= product.product_price %>"  placeholder="Product Price">
+    <input type="text" class="addProductInput" name="productCategory"  value="<%= product.product_category %>" placeholder="Product Category">
+    <textarea class="u-full-width addProductInput" name="productDescription" placeholder="Product Description"><%= product.product_description %></textarea>
+    <% if(product.public === 'yes'){ %>
+      <strong>Set public</strong> <input value="yes" name="isPublic" type="checkbox" checked>
+    <% }else{ %>
+      <strong>Set public</strong> <input value="yes" name="isPublic" type="checkbox">
+    <% } %>
+    <% if(product.product_sizes.length > 0){ %>
+      <strong>Add Sizes:</strong> <input class="addSizes" value='addSizes' type="checkbox" name="addSizes" checked>
+    <% } else{ %>
+      <strong>Add Sizes:</strong> <input class="addSizes" value='addSizes' type="checkbox" name="addSizes">
+    <% } %>
+    <div class="sizeCheckBoxes">
+      Extra Small:<input class="addProductInput" type="checkbox" name="xsCheckbox">
+      Small: <input  type="checkbox" name="sCheckbox">
+      Medium: <input type="checkbox" name="mCheckbox">
+      Large: <input type="checkbox" name="lCheckbox">
+      Extra Large: <input type="checkbox" name="xlCheckbox">
+    </div>
+    <%# <input type="file" class="addProductInput" name="file" placeholder="Product Image">%>
+    <input class="button-primary addProductBtn" type="submit" value="Add Product" class="submit">
+  </form>
+</div>

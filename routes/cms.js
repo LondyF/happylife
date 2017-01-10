@@ -48,14 +48,13 @@ router.get("/addproduct", function(req, res){
 var upload = multer({ storage: storage })
 
 router.post("/addproduct", upload.single('file'), function(req, res){
-  console.log(req.body);
-    console.log(req.file.filename);
   var productName = req.body.productName;
   var productImage = req.file.filename;
-  var productCategory;
+  var productCategory = req.body.productCategory;
   var productPrice = req.body.productPrice;
   var productDescription = req.body.productDescription;
   var productSizes = [];
+  var isPublic;
 
   if(req.body.addSizes ? true : false){
     if(req.body.xsCheckbox ? true : false){
@@ -75,6 +74,12 @@ router.post("/addproduct", upload.single('file'), function(req, res){
     }
   }
 
+  if(req.body.isPublic ? true : false){
+    isPublic = 'yes';
+  }else{
+    isPublic = 'no';
+  }
+
 
   var productData = {
     product_name: productName,
@@ -82,19 +87,77 @@ router.post("/addproduct", upload.single('file'), function(req, res){
     product_description: productDescription,
     product_price: productPrice,
     product_sizes: productSizes,
-    product_category: productCategory
+    product_category: productCategory,
+    public: isPublic
   }
 
-      Product.create(productData, function(err, data){
-        if(err){
-          console.log(err);
-        }else{
-          console.log(data);
-        }
-      });
-
+  Product.create(productData, function(err, data){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(data);
+    }
+  });
 });
 
+
+router.get("/edit_product/:id", function(req, res){
+  var id = req.params.id;
+  Product.findById(id, function(err, product){
+    res.render('cms/edit_product', {product: product});
+  });
+});
+
+router.post("/edit_Product/:id", function(req, res){
+  var id = req.params.id;
+  var productName = req.body.productName;
+  var productCategory = req.body.productCategory;
+  var productPrice = req.body.productPrice;
+  var productDescription = req.body.productDescription;
+  var productSizes = [];
+  var isPublic;
+
+  // if(req.body.addSizes ? true : false){
+  //   if(req.body.xsCheckbox ? true : false){
+  //     productSizes.push("XS");
+  //   }
+  //   if(req.body.sCheckbox ? true : false){
+  //     productSizes.push("S");
+  //   }
+  //   if(req.body.mCheckbox ? true : false){
+  //     productSizes.push("M");
+  //   }
+  //   if(req.body.lCheckbox ? true : false){
+  //     productSizes.push("L");
+  //   }
+  //   if(req.body.xlCheckbox ? true : false){
+  //     productSizes.push("XL");
+  //   }
+  // }
+
+  if(req.body.isPublic ? true : false){
+    isPublic = 'yes';
+  }else{
+    isPublic = 'no';
+  }
+
+  var productData = {
+    product_name: productName,
+    product_description: productDescription,
+    product_price: productPrice,
+    product_sizes: productSizes,
+    product_category: productCategory,
+    public: isPublic
+  }
+
+  Product.findByIdAndUpdate(id, productData, function(err, product){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(product);
+    }
+  });
+});
 
 router.post("/deleteproduct/:productname", function(req, res){
   console.log("been here");
@@ -117,6 +180,7 @@ router.get("/orders", function(req, res){
   res.render("cms/orders", {orders: orders})
   });
 });
+<<<<<<< HEAD
 
 router.get("/neworders", function(req, res){
   Orders.find({newOrder: 'yes'}, function(err, newOrders){
@@ -127,6 +191,8 @@ router.get("/neworders", function(req, res){
   });
 });
 
+=======
+>>>>>>> k
 router.post("/orders/delivered/:id", function(req, res){
   Orders.findById(req.params.id, function(err, order){
     if(err){
@@ -136,7 +202,7 @@ router.post("/orders/delivered/:id", function(req, res){
           Orders.findByIdAndUpdate(req.params.id, {delivery: 'yes'}, function(err){
            res.send("Yes");
           });
-        
+
       }else{
         Orders.findByIdAndUpdate(req.params.id, {delivery: 'no'}, function(err){
           res.send("No")
@@ -145,6 +211,7 @@ router.post("/orders/delivered/:id", function(req, res){
     }
   });
 });
+<<<<<<< HEAD
 
 router.get("/orders/:id", function(req, res){
   Orders.findById(req.params.id, function(err, order){
@@ -166,4 +233,6 @@ router.get("/orders/:id", function(req, res){
 });  
 
 
+=======
+>>>>>>> k
 module.exports = router;

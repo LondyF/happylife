@@ -8,9 +8,9 @@
             <li><a href="#"><i class="fa fa-home" aria-hidden="true"></a></i></li>
             <li><a href="#aboutUsSection">About Us</a></li>
             <li><a href="#contactUsSection">Contact Us</a></li>
+            <span class="shoppingCart"><a href="/shoppingCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><%= shoppingCart.length %></a></span>
           </ul>
         </div>
-        <span class="shoppingCart"><a href="/shoppingCart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><%= shoppingCart.length %></a></span>
         <span class="arrow"><a href="#webshopSection"><i class="fa fa-angle-down"></i></a></span>
         <div class="textBox"><h1>HappyLife The Best Place To Buy Your Favorite Clothing</h1></div>
       </div>
@@ -29,7 +29,7 @@
                 <a href="/show/<%= product.product_name %>"><img src=" /products/<%= product.product_image %>" alt="" /></a>
                 <small><%= product.product_category %></small>
                 <h5 class="productName"><a href="/show/<%= product.product_name %>"><%= product.product_name %></a></h5>
-                <h4 class="productPrice">f<%= product.product_price %></h4>
+                <h4 class="productPrice">fl <%= product.product_price %></h4>
                 <a class="button button-primary" href="/show/<%= product.product_name %>">buy now</a>
               </div>
             </div>
@@ -114,14 +114,12 @@
           <div class="row">
             <div class="twelve columns">
               <div class="socialmediaIcons">
-                <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                <i class="fa fa-google-plus-square" aria-hidden="true"></i>
+                <a href="#"><span class="fbIcon"><i class="fa fa-facebook-square" aria-hidden="true"></i></span></a>
+                <a href="#"><span class="twitterIcon"><i class="fa fa-twitter-square" aria-hidden="true"></i></span></a>
+                <a href="#"><span class="googlePlusIcon"><i class="fa fa-google-plus-square" aria-hidden="true"></i></span></a>
               </div>
             </div>
           </div>
       </div>
     </section>
 <% include ./layout/footer %>
-  </body>
-</html>

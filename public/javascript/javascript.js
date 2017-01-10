@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $('.shoppingCart').addClass("shoppingCartMenu");
   $(window).scroll(function () {
     if($(window).scrollTop() !== 0){
       $('.menu').addClass("menuFixed");

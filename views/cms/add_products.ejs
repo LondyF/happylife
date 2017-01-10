@@ -1,11 +1,12 @@
 <h1 class="title">Add product</h1>
 <div class="container">
   <div class="error"></div>
-  <form class="addProductForm" action="/cms/addproduct" method="POST" enctype="multipart/form-data">
+  <form class="addProductForm" action="/cms/addproduct/" method="POST" enctype="multipart/form-data">
     <input type="text" class="addProductInput" name="productName"  placeholder="Product Name">
     <input type="text" class="addProductInput" name="productPrice" placeholder="Product Price">
     <input type="text" class="addProductInput" name="productCategory" placeholder="Product Category">
     <textarea class="u-full-width addProductInput" name="productDescription" placeholder="Product Description"></textarea>
+    <strong>Set public</strong> <input class="" value="yes" name="isPublic" type="checkbox">
     <strong>Add Sizes:</strong> <input class="addSizes" value='addSizes' type="checkbox" name="addSizes">
     <div class="sizeCheckBoxes">
       Extra Small:<input class="addProductInput" type="checkbox" name="xsCheckbox">
