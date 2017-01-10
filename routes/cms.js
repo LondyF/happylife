@@ -180,7 +180,7 @@ router.get("/orders", function(req, res){
   res.render("cms/orders", {orders: orders})
   });
 });
-<<<<<<< HEAD
+
 
 router.get("/neworders", function(req, res){
   Orders.find({newOrder: 'yes'}, function(err, newOrders){
@@ -191,8 +191,7 @@ router.get("/neworders", function(req, res){
   });
 });
 
-=======
->>>>>>> k
+
 router.post("/orders/delivered/:id", function(req, res){
   Orders.findById(req.params.id, function(err, order){
     if(err){
@@ -211,7 +210,7 @@ router.post("/orders/delivered/:id", function(req, res){
     }
   });
 });
-<<<<<<< HEAD
+
 
 router.get("/orders/:id", function(req, res){
   Orders.findById(req.params.id, function(err, order){
@@ -233,6 +232,5 @@ router.get("/orders/:id", function(req, res){
 });  
 
 
-=======
->>>>>>> k
+
 module.exports = router;
