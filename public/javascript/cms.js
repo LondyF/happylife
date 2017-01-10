@@ -15,28 +15,21 @@ $( document ).ready(function() {
     $( ".mainContent" ).load("/cms/orders");
   });
 
-<<<<<<< HEAD
    $('.newOrder').on('click', function(){
   $( ".mainContent" ).load("/cms/neworders");
   });
 
-    $('.mainContent').on( "click", '.fa-eye', function(e) { 
+    $('.mainContent').on( "click", '.fa-eye', function(e) {
       e.preventDefault();
       var id = $(this).closest("tr").data("id");
       $( ".mainContent" ).load("/cms/orders/" + id);
   });
 
-  
-=======
   $('.mainContent').on('click', '.editProduct', function(e){
     var id = $(this).closest(".productItem").data("id");
     e.preventDefault();
     $( ".mainContent" ).load("/cms/edit_product/" + id);
   });
-
-
->>>>>>> k
-
 
   $('.mainContent').on( "click", '.addSizes', function() {
     if($('.addSizes').prop("checked")){
@@ -99,18 +92,10 @@ $( document ).ready(function() {
     $('.error').html(errorMessage);
   }
   });
-<<<<<<< HEAD
-   $('.mainContent').on( "click", '.fa-check', function(e) { 
+   $('.mainContent').on( "click", '.fa-check', function(e) {
     e.preventDefault();
     var id = $(this).closest("tr").data("id");
     var item = $(this).closest(".fa");
-=======
-   $('.mainContent').on( "click", '.fa-check', function(e) {
-
-   e.preventDefault();
-   var id = $(this).closest("tr").data("id");
-   console.log(id);
->>>>>>> k
         $.ajax({
         type: 'POST',
         url: 'cms/orders/delivered/' + id,
