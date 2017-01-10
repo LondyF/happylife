@@ -1,0 +1,23 @@
+<h1 class = "title">All Categories</h1>
+<div class = "container">
+    <table class="orders">
+    <tr>
+        <th>Categorie name</th>
+        <th>Categorie description</th>
+        <th>public</th>
+        <th>actions</th>
+    </tr>
+    <% category.forEach(function(catogories){ %>
+        <tr data-id="<%= catogories._id %>">
+            <td><%= catogories.category_name %></td>
+            <td><%= catogories.category_description %></td>
+            <td><%= catogories.public %></td>
+            <td>
+                <a href=""><i class="fa fa-pencil editcategory" aria-hidden="true"></i></a>  
+                <a href=""><i class="fa fa-trash deletecategory" aria-hidden="true"></i></a>  
+            </td> 
+
+        </tr>
+    <% }); %>
+    </table>    
+</div>

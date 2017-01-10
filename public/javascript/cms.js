@@ -15,21 +15,39 @@ $( document ).ready(function() {
     $( ".mainContent" ).load("/cms/orders");
   });
 
-   $('.newOrder').on('click', function(){
+  $('.newOrder').on('click', function(){
   $( ".mainContent" ).load("/cms/neworders");
   });
 
-    $('.mainContent').on( "click", '.fa-eye', function(e) {
+  $('.addcategory').on('click', function(){
+  $( ".mainContent" ).load("/cms/addcategory");
+  });
+
+  $('.managecategory').on('click', function(){
+  $( ".mainContent" ).load("/cms/categories");
+  });
+
+    $('.mainContent').on( "click", '.fa-eye', function(e) { 
       e.preventDefault();
       var id = $(this).closest("tr").data("id");
       $( ".mainContent" ).load("/cms/orders/" + id);
   });
+
 
   $('.mainContent').on('click', '.editProduct', function(e){
     var id = $(this).closest(".productItem").data("id");
     e.preventDefault();
     $( ".mainContent" ).load("/cms/edit_product/" + id);
   });
+
+  $('.mainContent').on( "click", '.editcategory', function(e) { 
+    e.preventDefault();
+    var id = $(this).closest("tr").data("id");
+    $( ".mainContent" ).load("/cms/editcategory/" + id);
+  });  
+
+  
+
 
   $('.mainContent').on( "click", '.addSizes', function() {
     if($('.addSizes').prop("checked")){
@@ -59,40 +77,39 @@ $( document ).ready(function() {
       }
     });
   });
-  $('.mainContent').on( "click", '.deleteproduct', function(e) {
-   e.preventDefault();
-   var confirmed = false;
-   var productName = $(this).closest(".productItem").data("productname");
-   var item = $(this).closest(".productItem");
-   $('.confirmOverlay').fadeIn(300);
-   $('.confirmOverlay').css("display", "block");
-   $( ".confirmed" ).on("click", function(e){
-        $.ajax({
-        type: 'POST',
-        url: 'cms/deleteproduct/' + productName,
-        dataType: 'JSON',
-        complete: function(){
-         $('.confirmOverlay').fadeOut(500);
-         console.log(item.children());
-         item.children(".deleted").css("display", "block");
-         item.children(".overlay").css("display", "none");
-        }
-      });
-  });
 
-  $( ".bottomConfirmBox button:nth-of-type(2)" ).on("click", function(){
-    $('.confirmOverlay').fadeOut(500, function(){
-    $('.confirmOverlay').css("display", "none");
+
+
+  $('.mainContent').on( "click", '.deleteproduct', function(e) {
+
+    e.preventDefault();
+    var confirmed = false;
+    var productName = $(this).closest(".productItem").data("productname");
+    var item = $(this).closest(".productItem");
+    $('.confirmOverlay').fadeIn(300);
+    $('.confirmOverlay').css("display", "block");
+    $( ".confirmed" ).on("click", function(e){
+          $.ajax({
+          type: 'POST',
+          url: 'cms/deleteproduct/' + productName,
+          dataType: 'JSON',
+          complete: function(){
+          $('.confirmOverlay').fadeOut(500);
+          console.log(item.children());
+          item.children(".deleted").css("display", "block");
+          item.children(".overlay").css("display", "none");
+          }
+        }); 
+    });
+    $( ".bottomConfirmBox button:nth-of-type(2)" ).on("click", function(){
+      $('.confirmOverlay').fadeOut(500, function(){
+      $('.confirmOverlay').css("display", "none");
+      });
     });
   });
 
-  function showError(errorMessage, e){
-    e.preventDefault();
-    $('.error').show();
-    $('.error').html(errorMessage);
-  }
-  });
-   $('.mainContent').on( "click", '.fa-check', function(e) {
+   $('.mainContent').on( "click", '.fa-check', function(e) { 
+
     e.preventDefault();
     var id = $(this).closest("tr").data("id");
     var item = $(this).closest(".fa");
@@ -114,4 +131,58 @@ $( document ).ready(function() {
   });
 
 
+
+  $('.mainContent').on( "click", '.addcategorybtn', function(e) { 
+    alert("lol");
+    $('.categoryInput').each(function(){
+      $(this).css("border", "1px solid #D1D1D1");
+      if($(this).val().length === 0){
+        $(this).css("border", "1px solid red");
+        showError("Please fill in every field.", e);
+       }
+
+    });
+   });
+
+
+  $('.mainContent').on( "click", '.editcategorybtn', function(e) { 
+    $('.categoryInput').each(function(){
+      $(this).css("border", "1px solid #D1D1D1");
+      if($(this).val().length === 0){
+        $(this).css("border", "1px solid red");
+        showError("Please fill in every field.", e);
+       }
+
+    });
+   });
+  $('.mainContent').on( "click", '.deletecategory', function(e) {
+    var id = $(this).closest("tr").data("id");
+    var tr = $(this).closest("tr")
+    e.preventDefault();
+    var confirmed = false;
+    
+    $('.confirmOverlay').fadeIn(300);
+    $('.confirmOverlay').css("display", "block");
+    $( ".confirmed" ).on("click", function(e){
+          $.ajax({
+          type: 'POST',
+          url: '/cms/deletecategory/' + id,
+          dataType: 'JSON',
+          complete: function(){
+          $('.confirmOverlay').fadeOut(500);
+          tr.fadeOut(500);
+          }
+        }); 
+    });
+    $( ".bottomConfirmBox button:nth-of-type(2)" ).on("click", function(){
+      $('.confirmOverlay').fadeOut(500, function(){
+      $('.confirmOverlay').css("display", "none");
+      });
+    });
+  });
 });
+  function showError(errorMessage, e){
+    e.preventDefault();
+    $('.error').show();
+    $('.error').html(errorMessage);
+  }
