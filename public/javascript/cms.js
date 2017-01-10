@@ -11,10 +11,17 @@ $( document ).ready(function() {
     $( ".mainContent" ).load("/cms/addproduct");
   });
 
-    $('.allOrders').on('click', function(){
+  $('.allOrders').on('click', function(){
     $( ".mainContent" ).load("/cms/orders");
   });
-  
+
+  $('.mainContent').on('click', '.editProduct', function(e){
+    var id = $(this).closest(".productItem").data("id");
+    e.preventDefault();
+    $( ".mainContent" ).load("/cms/edit_product/" + id);
+  });
+
+
 
 
   $('.mainContent').on( "click", '.addSizes', function() {
@@ -43,9 +50,9 @@ $( document ).ready(function() {
           showError("Product price is not a number!", e);
         }
       }
-    });    
+    });
   });
-  $('.mainContent').on( "click", '.deleteproduct', function(e) {  
+  $('.mainContent').on( "click", '.deleteproduct', function(e) {
    e.preventDefault();
    var confirmed = false;
    var productName = $(this).closest(".productItem").data("productname");
@@ -63,7 +70,7 @@ $( document ).ready(function() {
          item.children(".deleted").css("display", "block");
          item.children(".overlay").css("display", "none");
         }
-      }); 
+      });
   });
 
   $( ".bottomConfirmBox button:nth-of-type(2)" ).on("click", function(){
@@ -78,8 +85,8 @@ $( document ).ready(function() {
     $('.error').html(errorMessage);
   }
   });
-   $('.mainContent').on( "click", '.fa-check', function(e) { 
-      
+   $('.mainContent').on( "click", '.fa-check', function(e) {
+
    e.preventDefault();
    var id = $(this).closest("tr").data("id");
    console.log(id);
@@ -97,8 +104,8 @@ $( document ).ready(function() {
             $('.fa-check').removeClass("delivered");
           }
         }
-       }); 
+       });
   });
 
-  
+
 });

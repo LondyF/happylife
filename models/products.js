@@ -9,6 +9,7 @@ var productSchema = new Schema({
   product_price: {type: String},
   product_category: {type: String},
   product_sizes: [],
+  public: {type: String, enum: ['yes', 'no'], default: 'yes'},
   in_stock: {type: String, enum: ['yes', 'no'], default: 'yes'}
 });
 

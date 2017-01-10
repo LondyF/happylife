@@ -58,11 +58,16 @@ body, html {
 
 .menuAtTop{
   position:fixed;
-  width: 395px;
+  text-align: center;
   left: 0;
   right: 0;
   margin: 0 auto;
   margin-top: 25px;
+  clear: both;
+}
+
+.menuAtTop ul{
+  display: inline-block;
 }
 
 .menuFixed{
@@ -83,7 +88,6 @@ body, html {
 
 .menuFixed ul{
     margin: 2px auto;
-    margin-left: 80px;
     line-height: 2;
     padding-left: 0;
 }
@@ -113,23 +117,24 @@ body, html {
 }
 
 .menu a:hover{
-    color: #1EAEDB;
+  color: #1EAEDB;
 }
 
-.shoppingCart{
-  display: block;
+/*.shoppingCart{
+  display: inline-block;
   color: white;
   float: right;
   margin-right: 30px;
   letter-spacing: 2px;
   font-size: 22px;
   line-height: 1;
+  clear: both;
 }
 
 .shoppingCartMenu{
   position: absolute;
   right: 0;
-}
+}*/
 
 /*<--------------------- First Section ---------------------->*/
 
@@ -362,15 +367,28 @@ h6{
   width: 90%;
 }
 
+#contactUsSection a{
+  color: white;
+}
+
 #contactUsSection .socialmediaIcons{
   font-size: 25px;
   letter-spacing: 2.5px;
   line-height: 0;
 }
 
-#contactUsSection .socialmediaIcons:hover{
+#contactUsSection .googlePlusIcon:hover{
   transition: 0.5s all;
-  color: red;
+  color: #d93725;
+}
+
+#contactUsSection .fbIcon:hover{
+  transition: 0.5s all;
+  color: #3a589b;
+}
+#contactUsSection .twitterIcon:hover{
+  transition: 0.5s all;
+  color: #27aae1;
 }
 
 #contactUsSection .mainText{
